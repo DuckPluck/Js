@@ -138,28 +138,27 @@
 
 // 11 объекты
 
-const person = {
-    firstName: 'Danya',
-    lastName: 'Utkin',
-    year: 1999,
-    languages: ['Ru', 'En', 'De'],
-    hasWife: false,
-    greet: function() {
-        console.log('greet from person')
-    }
-}
+// const person = {
+//     firstName: 'Danya',
+//     lastName: 'Utkin',
+//     year: 1999,
+//     languages: ['Ru', 'En', 'De'],
+//     hasWife: false,
+//     greet: function() {
+//         console.log('greet from person')
+//     }
+// }
 
-console.log(person);
-console.log(person.firstName);
-console.log(person['lastName']);
-person.greet();
+// console.log(person);
+// console.log(person.firstName);
+// console.log(person['lastName']);
+// person.greet();
 
-const key = 'languages';
-console.log(person[key]);
-console.log(person.languages);
+// const key = 'languages';
+// console.log(person[key]);
+// console.log(person.languages);
 
-person.hasWife = true;
-console.log(person.hasWife);
+// person.hasWife = true;
+// console.log(person.hasWife);
 
-person.isProgrammer = true;
-
+// person.isProgrammer = true;

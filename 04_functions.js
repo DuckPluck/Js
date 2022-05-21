@@ -1,5 +1,13 @@
 // функции
 
+// // Функция
+// function addItemToEnd() {
+//     let example;
+// }
+// const example = 1;
+// // Метод
+// example.addItemToEnd();
+
 // //Function Declaration
 // function greet(name) {
 //     console.log('Привет - ', name);

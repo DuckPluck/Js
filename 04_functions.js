@@ -1,6 +1,6 @@
 // функции
 
-// // Функция
+// // ***Функция***
 // function addItemToEnd() {
 //     let example;
 // }
@@ -8,14 +8,14 @@
 // // Метод
 // example.addItemToEnd();
 
-// //Function Declaration
+// //***Function Declaration***
 // function greet(name) {
 //     console.log('Привет - ', name);
 // }
 // // greet('Лена');
 
 
-// //Function Expression 
+// //***Function Expression*** 
 // // не может быть объяввлен до блока функции + преимущества синтаксиса
 
 // const greet2 = function greet2(name) {
@@ -26,7 +26,7 @@
 // console.log(typeof greet);
 // console.dir(greet);
 
-// Анонимные функции 
+// ***АНОНИМНЫЕ ФУНКЦИИ***
 // функции внутри функции, которые не имеют названия
 
 // let counter = 0;
@@ -45,7 +45,7 @@
 // }, 1000
 // );
 
-// 3 Стрелочные функции
+// ***3 СТРЕЛОЧНЫЕ ФУНКЦИИ***
 
 // function greet(name) {
 //     console.log('Привет - ', name);
@@ -65,7 +65,7 @@
 // console.log(pow2);
 // console.log(pow2(5));
 
-// 4 Параметры по умолчанию
+// ***4 ПАРАМЕТРЫ ПО УМОЛЧАНИЮ***
 
 // const sum = (a = 1, b = 1) => a + b;                    //можно не задавать параметр
 // console.log(sum(40));
@@ -86,7 +86,7 @@
 // console.log(res);
 
 
-// 5 замыкания                          //часто используется для создания приватных переменных
+// ***5 замыкания***                          //часто используется для создания приватных переменных
 
 // function createMember(name) {
 //     return function(lastName) {

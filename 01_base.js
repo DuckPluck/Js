@@ -1,11 +1,11 @@
-// // 1 переменные
+// // ***1 переменные***
 
 // var name = 'Danya';
 // const isProgrammer = true;
 // //const age = 26;
 // const _private = 'private';
 
-// // 2 Мутирование
+// // ***2 Мутирование***
 
 // //console.log('Имя человека: ' + name + ', а возраст человека: ' + age);
 // //console.log(age);
@@ -14,7 +14,7 @@
 // //const lastName = prompt('Введите фамилию');
 // //alert(name + ' ' + lastName);
 
-// // 3 Операторы
+// // ***3 Операторы***
 
 // const currentYear = 2022;
 // const birthYear = 1999;
@@ -32,7 +32,7 @@
 // console.log(a + b);
 // console.log(a + b);
 
-// 4 типы данных
+// ***4 типы данных***
 
 // const isProgrammer = true;
 // const name = 'Danya';
@@ -45,7 +45,7 @@
 // console.log(typeof x);
 // console.log(null);
 
-// 5 приоритет операторов
+// ***5 приоритет операторов***
 
 // const fullAge = 26;
 // const birthYear = 1999;
@@ -54,7 +54,7 @@
 // const isFullAge = currentYear - birthYear >= fullAge;
 // console.log(isFullAge)
 
-// 6 Условные операторы
+// ***6 Условные операторы***
 
 // const courseStatus = 'pending'; // ready, fail, pending
 
@@ -81,9 +81,9 @@
 
 // isReady ? console.log('1') : console.log('0'); // Тернарное выражение
 
-// 7 Булева логика
+// ***7 Булева логика***
 
-// 8 функции
+// ***8 функции***
 
 // function calculateAge(year) {
 //   return 2022 - year;
@@ -109,7 +109,7 @@
 // logInfoAbout("Flex", 2222);
 
 
-// 9 массивы (https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array#relationship_between_length_and_numerical_properties)
+// ***9 массивы*** (https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array#relationship_between_length_and_numerical_properties)
 
 
 // let cars = ['Мазда', 'Мерседес', 'Ford'];
@@ -121,7 +121,7 @@
 // console.log(cars, cars[3])
 
 
-// 10 циклы
+// ***10 циклы***
 
 // const cars = ['Мазда', 'Мерседес', 'Ford'];
 // // for (let i = 0; i < cars.length; i++) {
@@ -136,7 +136,7 @@
 // }
 
 
-// 11 объекты
+// ***11 объекты***
 
 // const person = {
 //     firstName: 'Danya',

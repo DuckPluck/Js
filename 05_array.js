@@ -44,29 +44,29 @@ const fib = [1, 1, 2, 3, 5, 8, 13];
 //     {name: 'Karina', budget: 1700},
 // ];
 
-// // const index = people.findIndex(function(person) {   //анонимная callback функция - туда кладется вывод
-// //     console.log(person);                            //1 выведет всех персон строчками
-// // })
+// const index = people.findIndex(function(person) {   //анонимная callback функция - туда кладется вывод
+//     console.log(person);                            //1 выведет всех персон строчками
+// })
 
-// // const index2 = people.findIndex(function(person) {
-// //     return person.budget === 3500;                  //2 вернет индекс персоны с бюджетом 3500
-// // })   
-// // console.log('budget = 3500 index:', index2);
+// const index2 = people.findIndex(function(person) {
+//     return person.budget === 3500;                  //2 вернет индекс персоны с бюджетом 3500
+// })   
+// console.log('budget = 3500 index:', index2);
 
-// // console.log(people[index2]);                        //выведет персону с бюджетом 3500
+// console.log(people[index2]);                        //выведет персону с бюджетом 3500
 
 
-// // const person = people.find(function(person) {
-// //     return person.budget === 3500;                  //3 тaкже выведет персону с бюджетом 3500
-// // })  
-// // console.log(person); 
+// const person = people.find(function(person) {
+//     return person.budget === 3500;                  //3 тaкже выведет персону с бюджетом 3500
+// })  
+// console.log(person); 
 
-// // let findedPerson;
-// // for (const person of people) {                          //4 плохой метод поиска по obj без анонимности
-// //     if (person.budget === 3500) {
-// //         findedPerson = person;
-// //     }
-// // }
+// let findedPerson;
+// for (const person of people) {                          //4 плохой метод поиска по obj без анонимности
+//     if (person.budget === 3500) {
+//         findedPerson = person;
+//     }
+// }
 
 // // console.log('findedPerson: ', findedPerson);
 

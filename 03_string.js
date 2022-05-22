@@ -35,6 +35,9 @@
 // console.log(string);
 // console.log(string.trimStart());
 
+
+//***Строчку, передаваемую в функцию Js разделил как массив "s"***
+
 // function logPerson(s, name, age) {
 //     if (age < 0) {
 //         age = 'Еще не родился';

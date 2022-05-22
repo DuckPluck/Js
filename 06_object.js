@@ -5,7 +5,7 @@
 //     isProgrammer: true,
 //     languages: ['ru', 'en', 'de'],
 //     'complex key': 'Complex Value',
-//     ['key_' + (1 + 3)]: 'Computed key',
+//     ['key_' + (1 + 3)]: 'Computed key',   //способ задать значения, например Date.now() или др. вычисляемые зн.
 //     greet() {                                       //метод
 //         console.log('greet from person')
 //     }
@@ -55,38 +55,74 @@
 //     console.log('value ', person[key]);
 // })
 
-//***контекст***                                  мало что понял тут
-// const person = {
-//     name: 'Danya',
-//     age: 23,
-//     isProgrammer: true,
-//     languages: ['ru', 'en', 'de'],
-//     'complex key': 'Complex Value',
-//     ['key_' + (1 + 3)]: 'Computed key',
-//     greet() {                                       //метод
-//         console.log('greet from person')
-//     },
-//     info() {
-//         console.info('Информация о человеке по имени: ', this.name); // тут person.name тоже самое что this.name
-//     }
-// }
+//***контекст***            //вместо обращения по имени объекта person лучше использовать "this"
+const person = {
+    name: 'Danya',
+    age: 23,
+    isProgrammer: true,
+    languages: ['ru', 'en', 'de'],
+    'complex key': 'Complex Value',
+    ['key_' + (1 + 3)]: 'Computed key',
+    greet() {                                       //метод
+        console.log('greet from person')
+    },
+    info() {
+        console.info('Информация о человеке по имени: ', this.name); // тут person.name тоже самое что this.name
+    }
+}
 
 // person.info();
 
-const logger = {
-    keys() {
-        console.log('object keys: ', Object.keys(this));
-    },
-    keysAndValues() {
-        const keys = Object.keys(logger);
-        keys.forEach((key) => {
-            console.log('key: ', key);
-            console.log('value: ', this[key])
-        })
-    }
-}
-logger.keysAndValues();
+// const logger = {                            
+//     keys() {                                
+//         console.log('object keys: ', Object.keys(this));
+//     }
+// }
 
-// const bound = logger.keys.bind(person);
+// const bound = logger.keys.bind(person);      //keys.bind() привязывает объект к адресу this, который мы выберем
 // bound();
-// logger.keys.call(person)
+ 
+
+//усложняем:
+// const logger = {                            //допустим нужно сделать свой консоль логгер с доп функциями
+//     keys() {                                //чтобы он выводил инфу в формате "key": value
+//         console.log('object keys: ', Object.keys(this));
+//     },
+//     keysAndValues() {
+//         Object.keys(this).forEach((key) => {         //тут обращение к ключам через метод .keys и ссылку на logger (this)
+//             console.log(`"${key}": ${this[key]}`);   //тут динамическое обращение к каждому ключу и его значению
+//         })
+//     }
+// }
+// logger.keysAndValues.call(logger);
+
+
+//усложняемм (добавляем разделительные черты с включением):
+// const logger = {
+//     keys() {
+//         console.log('object keys: ', Object.keys(this));
+//     },
+//     keysAndValues() {
+//         Object.keys(this).forEach((key) => {         
+//             console.log(`"${key}": ${this[key]}`);   
+//         })
+//     },
+//     withParams (top = false, between = false, bottom = false) {
+//         if (top) {
+//             console.log('------- Start -------')
+//         }
+
+//         Object.keys(this).forEach((key, index, array) => {      //forEach() на самом деле принимает 3 эл-та  
+//             console.log(`"${key}": ${this[key]}`);   
+//             if (between && index !== array.length - 1) {        //если between включен и не последний элемент
+//                 console.log('--------------------')
+//             }
+//         })
+
+//         if (bottom) {
+//             console.log('------- End -------')
+//         }
+//     }
+// }
+// logger.withParams.call(person, true, true, true);   //первый аргумент отвечает за контекст, остальные идут на параметры withParams()
+// logger.withParams.apply(person, [true, true, true]); //первый аргумент отвечает за контекст, второй массив идет на параметры withParams()

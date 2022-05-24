@@ -179,7 +179,7 @@
 //        ***.findIndex() Поиск индекса obj с бюджетом 3500***
 //           "ЛЯМБДА ФУНКЦИЯ"*** (без лишних переменных)
 //               (когда func в одну стр можно упразднить "return")
-//                   person - анонимная callback функция - туда кладется вывод
+//                   person - callback функция - туда кладется вывод
 // const index2 = people.findIndex(person => {person.budget === 3500;})    
 // console.log('budget = 3500 index:', index2);
 
@@ -334,3 +334,146 @@
 // bound();                                     //вызов функции
 
 // logger.keys.call(person)                     //keys.call() привязывает объект к адресу this и сразу вызывает
+
+
+
+
+
+
+//                          ***Event loop***
+//                    Самый типичный пример асинхронности - таймауты и интервалы
+
+
+//                  ***ТАЙМАУТ*** между командами
+//                   Аргументы - callback ф-ия и время в мсек (1000мсек = 1сек)
+//  const timeout = setTimeout(() => {       
+//     console.log('After timeout');
+// }, 2500);
+// clearTimeout(timeout);           //отмена таймаута
+
+
+
+
+//                   ***ИНТЕРВАЛ*** повторения между командами. Аргументы - callback ф-ия и время в мсек
+// const interval = setInterval(() => { 
+//         console.log('interval');
+// }, 1000);
+// clearInterval(interval);         //отмена интервала
+
+
+
+
+//                                 ***PROMISE***
+//механизм, который позволяет удобно работать с большим кол-вом асинхронности
+//позволяет убрать лишние уровни вложенности при большом кол-ве callback функций
+//применим его полную форму на функцию delay()
+
+// const delay = (wait = 1000) => {
+//     const promise = new Promise((resolve, reject) => {               //этот callback 'executor' принимает параметры resolve и reject
+//         setTimeout(() => {
+//             if (promise !== 0) {resolve();                                //условие ошибки
+//              } else {reject('Что-то пошло не так. Повторите попытку')}        //когда все завершится вызовется метод resolve() или reject()
+//         }, wait)
+//     })
+//     return promise;
+// }
+
+// const getData = () => new Promise(resolve => resolve([               //Вызов функции
+//     1, 1, 2, 3, 5, 8, 13
+// ]));
+
+// async function asyncExample() {         //необходимо добавить "async", для того, чтобы воспользоваться "await"
+//     try {                               //try{} catch(){} finally{} используется для вывода ошибки и вывода сообщения о завершении функции (дебаг)
+//         await delay(3000);              //вместо .then, чтобы время задержки учитывалось, можно воспользоваться "await"
+//         const data = await getData();   //тут тоже
+//         console.log('Data', data);
+//     } catch (e) {
+//         console.log(e)
+//     } finally {
+//         console.log('Finally')
+//     }
+// }
+// asyncExample();
+
+
+
+
+
+//                                          ***DOM***
+
+// получаем доступ к атрибутам заголовка:
+// const heading = document.getElementById('hello');
+// console.dir(heading.attributes);
+// console.dir(heading.id);
+
+
+// получаем доступ к node'ам html:
+// const heading2 = document.querySelector('h2');                 //все доступы по 1 попавшемуся эл-ту
+// const heading2 = document.querySelector('.h2-class');       //доступ по классу
+// const heading2 = document.querySelector('#sub-hello');      //доступ по id
+// const heading2_2 = heading2.nextElementSibling;             //доступ по атрибуту след. эл-та (ищите в dir())
+
+// const h2List = document.querySelectorAll('h2');                //доступ ко всем h2 
+// const heading2_2 = h2List[h2List.length - 1];                  //доступ к определенному h2 по списку всех h2
+
+
+
+
+//                          ***ОПТИМАЛЬНЫЙ СПОСОБ ИЗМИНЕНИЯ СТИЛЕЙ***
+
+// const heading = document.getElementById('hello');
+// function addStylesTo(node, text, color, fontSize) {
+//     node.textContent = text;
+//     node.style.color = color;                                  // все в строчном формате ' '. 
+//     node.style.textAlign = 'center';                           // "text-align" в js превратится в "textAlign"
+//     node.style.backgroundColor = 'rgb(255, 255, 220)';
+//     node.style.padding = '2rem';
+//     if (fontSize) {                                            // falsy: '', undefined, null, 0, false
+//         node.style.fontSize = fontSize;
+//     }
+//     node.style.display = 'flex';
+//     node.style.justifyContent = 'center';
+// }
+
+// setTimeout(() => {
+//     addStylesTo(heading, 'Changed from js 1', 'red')
+// }, 1000);
+
+// setTimeout(() => {
+//     addStylesTo(heading2, 'Changed from js 2', 'green')
+// }, 2000);
+
+// setTimeout(() => {
+//     addStylesTo(heading2_2.children[0], 'Changed from js 3', 'blue')    //если в тексте нужна ссылка - придется ссылаться конкретно на нее
+// }, 3000);
+
+
+
+
+//                                      ***СОБЫТИЯ***
+
+// developer.mozila.org/ru/docs/Web/Events - список всех событий
+// вводятся одним словом без пробелов .on'eventName' 
+
+// (через .onEvent)
+// heading.onclick = () => {                           
+//     if (heading.style.backgroundColor === 'rgb(255, 255, 220)') {
+//         heading.style.backgroundColor = 'red';
+//         heading.style.color = 'rgb(255, 255, 220)';
+//     } else if (heading.style.backgroundColor === 'red') {
+//         heading.style.backgroundColor = 'rgb(255, 255, 220)';
+//         heading.style.color = 'red';
+//     }
+// }
+
+
+//                                      ***ТРЕКИНГ СОБЫТИЯ***
+//                                     таким образом можно отслеживать действия пользователей на сайте или проводить дебаг
+
+// const link = heading2_2.children[0];
+// link.onclick = () => {                       //для имитации действия можно включить в блок event.preventDefault()
+//     console.log('Click on link', event, event.target, event.target.getAttribute('href'));
+// }
+
+
+

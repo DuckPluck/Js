@@ -56,20 +56,20 @@
 // })
 
 //***контекст***            //вместо обращения по имени объекта person лучше использовать "this"
-const person = {
-    name: 'Danya',
-    age: 23,
-    isProgrammer: true,
-    languages: ['ru', 'en', 'de'],
-    'complex key': 'Complex Value',
-    ['key_' + (1 + 3)]: 'Computed key',
-    greet() {                                       //метод
-        console.log('greet from person')
-    },
-    info() {
-        console.info('Информация о человеке по имени: ', this.name); // тут person.name тоже самое что this.name
-    }
-}
+// const person = {
+//     name: 'Danya',
+//     age: 23,
+//     isProgrammer: true,
+//     languages: ['ru', 'en', 'de'],
+//     'complex key': 'Complex Value',
+//     ['key_' + (1 + 3)]: 'Computed key',
+//     greet() {                                       //метод
+//         console.log('greet from person')
+//     },
+//     info() {
+//         console.info('Информация о человеке по имени: ', this.name); // тут person.name тоже самое что this.name
+//     }
+// }
 
 // person.info();
 

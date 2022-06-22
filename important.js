@@ -369,7 +369,7 @@
 //применим его полную форму на функцию delay()
 
 // const delay = (wait = 1000) => {
-//     const promise = new Promise((resolve, reject) => {               //этот callback 'executor' принимает параметры resolve и reject
+//     const promise = new Promise((resolve, reject) => {               //этот callback принимает параметры resolve и reject
 //         setTimeout(() => {
 //             if (promise !== 0) {resolve();                                //условие ошибки
 //              } else {reject('Что-то пошло не так. Повторите попытку')}        //когда все завершится вызовется метод resolve() или reject()

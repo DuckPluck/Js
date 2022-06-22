@@ -369,7 +369,7 @@
 //применим его полную форму на функцию delay()
 
 // const delay = (wait = 1000) => {
-//     const promise = new Promise((resolve, reject) => {               //этот callback принимает параметры resolve и reject
+//     const promise = new Promise((resolve, reject) => {               //этот callback принимает параметры resolve (для норм работы) и reject (для ошибок)
 //         setTimeout(() => {
 //             if (promise !== 0) {resolve();                                //условие ошибки
 //              } else {reject('Что-то пошло не так. Повторите попытку')}        //когда все завершится вызовется метод resolve() или reject()
@@ -378,12 +378,23 @@
 //     return promise;
 // }
 
+// delay(2500)                                             //функция вернет promise, который имеет 3 стандартных метода
+//     .then(() => {console.log('After 2 seconds')})       //в .then мы попадаем, когда время истечет
+//     .catch(err => console.error('Error', err))          //в .catch мы попадаем если произошла ошибка
+//     .finally(() => console.log('Finnaly'))              //в .finally мы попадаем когда функция кончится
+
+
+
+
+
+//                            ***promise без callback***
+
 // const getData = () => new Promise(resolve => resolve([               //Вызов функции
 //     1, 1, 2, 3, 5, 8, 13
 // ]));
 
 // async function asyncExample() {         //необходимо добавить "async", для того, чтобы воспользоваться "await"
-//     try {                               //try{} catch(){} finally{} используется для вывода ошибки и вывода сообщения о завершении функции (дебаг)
+//     try {                               //try{} catch(){} finally{} используется для вывода ошибки и вывода сообщения о завершении функции
 //         await delay(3000);              //вместо .then, чтобы время задержки учитывалось, можно воспользоваться "await"
 //         const data = await getData();   //тут тоже
 //         console.log('Data', data);

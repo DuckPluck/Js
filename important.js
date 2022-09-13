@@ -290,7 +290,7 @@
 
 
 
-//                      ***КОНТЕКСТ*** на практикеу сложняемм (добавляем разделительные черты с включением):
+//                      ***КОНТЕКСТ*** на практике усложняемм (добавляем разделительные черты с включением):
 // const logger = {
 //     keys() {
 //         console.log('object keys: ', Object.keys(this));
@@ -412,13 +412,13 @@
 
 //                                          ***DOM***
 
-// получаем доступ к атрибутам заголовка:
+// Получаем доступ к атрибутам заголовка:
 // const heading = document.getElementById('hello');
 // console.dir(heading.attributes);
 // console.dir(heading.id);
 
 
-// получаем доступ к node'ам html:
+// Получаем доступ к node'ам html:
 // const heading2 = document.querySelector('h2');                 //все доступы по 1 попавшемуся эл-ту
 // const heading2 = document.querySelector('.h2-class');       //доступ по классу
 // const heading2 = document.querySelector('#sub-hello');      //доступ по id
@@ -430,7 +430,7 @@
 
 
 
-//                          ***ОПТИМАЛЬНЫЙ СПОСОБ ИЗМИНЕНИЯ СТИЛЕЙ***
+//                          ***ОПТИМАЛЬНЫЙ СПОСОБ ИЗМЕНЕНИЯ СТИЛЕЙ***
 
 // const heading = document.getElementById('hello');
 // function addStylesTo(node, text, color, fontSize) {
@@ -487,4 +487,55 @@
 // }
 
 
+//                                      ***МЕТОДЫ ФУНКЦИИ***
+// Создадим объект персоны с функцией:
+// const person = {
+//     name: 'Daniil',
+//     age: '23',
+//     loginfo: function(job, phone) {                           // Эта запись - function() {} - эквивалента стрелочной функции, только с несколькими строчками
+//         console.group(`${this.name} info:`)       // console.group() позволяет объединить все логи, вложенные в блок до console.groupEnd()
+//         console.log(`Name is ${this.name}`)
+//         console.log(`Age is ${this.age}`)
+//         console.log(`Job is ${job}`)              // Эти параметры мы принимаем извне, так что без .this
+//         console.log(`Phone is ${phone}`)
+//         console.groupEnd()
+//     }
+// }
 
+// Теперь создадим новую персону - Карину, чтобы вызвать для нее чужую функцию loginfo()
+// const karina = {
+//     name: 'Karina',
+//     age: '22'
+// }
+
+// Метод bind() только возвращает функцию, чтобы вызвать ее и сразу выполнить нужно добавить скобки в конце 
+// (можно опустить назваие функции, когда оно совпадает с названием инициализации и упростить запись)
+// person.loginfo.bind(karina, 'Frontend', '8-999-123-12-12')()                   
+
+// Метод .call() позволяет только вызывать, без инициации (то есть обратиться через него у фунцкции нельзя)
+// person.loginfo.call(karina, 'Frontend', '8-999-123-12-12')
+
+// Тоже самое делает метод .apply(), только аргументы перечисляются в массиве
+// person.loginfo.apply(karina, ['Frontend', '8-999-123-12-12'])
+
+
+
+
+//                                      ***ВШИВАНИЕ МЕТОДА В ПРОТОТИП ОБЪЕКТА***
+// Создадим функцию, которая выполняет опр. логику для массива
+const array = [1,2,3,4,5]
+
+// function multBy(arr, n) {
+//     return arr.map((i) => i * n)
+// }
+
+// console.log(multBy(array, 20))
+
+// Теперь нам нужно каждый раз ее импортировать и передавать в нее новый массив.
+// Чтобы избежать этого, мы вошьем функцию в прототип массива:
+
+Array.prototype.multBy = function(n) {
+        return this.map((i) => i * n)       // Тут this будет указывать на массив, для которого мы применяем функци
+}
+
+console.log(array.multBy(20))
